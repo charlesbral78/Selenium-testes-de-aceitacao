@@ -1,19 +1,17 @@
-package br.com.alura.leilao.login;
+package login;
 
+import br.com.alura.leilao.PageObject;
 import br.com.alura.leilao.leiloes.LeiloesPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LoginPage {
+public class LoginPage extends PageObject {
     public static final String URL_LOGIN = "http://localhost:8080/login";
 
-    private WebDriver browser;
+
 
     public LoginPage() {
-        System.setProperty("webdriver.chrome.driver", "C:/ALURA/2019-selenium-java-projeto_inicial/drivers/chromedriver.exe");
-        this.browser = new ChromeDriver();
+        super(null);
         this.browser.navigate().to(URL_LOGIN);
     }
 
@@ -41,10 +39,6 @@ public class LoginPage {
 
     public boolean isPaginaDeLoginComDadosInvalidos() {
         return browser.getPageSource().equals(URL_LOGIN + "? Error");
-    }
-
-    public void fechar() {
-        this.browser.quit();
     }
 
     public void navegaParaPaginaDeLances() {
